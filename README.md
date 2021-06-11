@@ -1,2 +1,18 @@
 # actobscom
-This repository contains analysis code and data associated with the following paper: Rouault M., Weiss A., Lee J. K., Bouté J., Drugowitsch J., Chambon V.* &amp; Wyart V.* Specific cognitive signatures of information-seeking in controllable environments. BioRxiv (2021)
+This repository contains analysis code and data associated with the following paper:
+
+Rouault M., Weiss A., Lee J. K., Bouté J., Drugowitsch J., Chambon V.* &amp; Wyart V.* Specific cognitive signatures of information-seeking in controllable environments. BioRxiv (2021)
+
+Script and data files are included in the repository to enable replication of data analyses and statistics reported in the paper.
+The folder DATA will contain anonymised behavioral data files for Experiment 1 and 2 of the paper. 
+•	Exp1.mat
+•	Exp2.mat
+
+License.
+
+This code is being released with a permissive open-source license. You should feel free to use or adapt the utility code as long as you follow the terms of the license, which are enumerated below. If you make use of or build on the analyses, we would appreciate that you cite the paper.
+Copyright (c) 2021, Marion Rouault
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+![image](https://user-images.githubusercontent.com/31099255/121721091-26f6e100-cae4-11eb-8f42-2e230730f962.png)
