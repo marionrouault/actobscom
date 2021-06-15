@@ -1,12 +1,16 @@
 # actobscom
 This repository contains analysis code and data associated with the following paper:
 
-Rouault M., Weiss A., Lee J. K., Bouté J., Drugowitsch J., Chambon V.* &amp; Wyart V.* Specific cognitive signatures of information-seeking in controllable environments. BioRxiv (2021)
+Rouault M., Weiss A., Lee J. K., Bouté J., Drugowitsch J., Chambon V.* & Wyart V.* Specific cognitive signatures of information-seeking in controllable environments. BioRxiv (2021) https://www.biorxiv.org/content/10.1101/2021.01.04.425114v1.full
 
-Script and data files are included in the repository to enable replication of data analyses and statistics reported in the paper.
-The folder DATA will contain anonymised behavioral data files for Experiment 1 and 2 of the paper. 
-•	Exp1.mat
-•	Exp2.mat
+Script and data files are included in the repository to enable replication of the main data analyses and statistics reported in the paper. The repository will be completed upon publication in a peer-review journal.
+
+The folder SCRIPTS contains:
+
+•	actobscom_psychometry.m, the main Matlab code
+•	fit_model_prev and fit_model_crev, two helper scripts for fitting psychometric parameters
+•	a folder DATA contains anonymised behavioral data files for Experiment 1 and 2A of the paper. 
+
 
 License.
 
