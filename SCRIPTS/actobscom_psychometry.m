@@ -1,5 +1,5 @@
-% Rouault et al. (2021) BioRxiv. Specific cognitive signatures of
-% information seeking in controllable environments.
+% Rouault et al. (2022) BioRxiv. Controllability boosts neural and
+% cognitive correlates of changes-of-mind in uncertain environments.
 % This script reproduced the main behavioral and psychometric analyses and
 % statistics reported in the paper.
 
@@ -9,8 +9,12 @@
 % - Choice repetition curve
 % - Confidence repetition curve
 
-% task 1 = cue-based inference condition
-% task 2 = outcome-based inference condition
+% Fit of the choice-PSE on the next trial
+
+% Performance, confidence, and discrimination
+
+% task 1 = uncontrollable C- condition
+% task 2 = controllable C+ condition
 
 
 % set experiment referring to the Experiments presented in the paper:
@@ -375,7 +379,7 @@ for isubj = 1:nsubj
         
         
         
-    end % end of loop over itask (i.e. condition Cb/Ob)
+    end % end of loop over itask (i.e. condition C-/C+)
     
 end % end of loop over participants
 
@@ -390,11 +394,11 @@ end % end of loop over participants
 disp(['- Choice reversal curves:'])
 
 [~,pval,~,stats] = ttest(tcst_resp(:,1),tcst_resp(:,2));
-disp(['choice: time constant between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['choice: time constant between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 [~,pval,~,stats] = ttest(pmax_resp(:,1),pmax_resp(:,2));
-disp(['choice: asymptotic accuracy between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['choice: asymptotic accuracy between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 
@@ -402,11 +406,11 @@ disp(['choice: asymptotic accuracy between Cb and Ob t=',num2str(stats.tstat), .
 disp(['- Confidence reversal curves:'])
 
 [~,pval,~,stats] = ttest(tcst_conf(:,1),tcst_conf(:,2));
-disp(['confidence: time constant between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['confidence: time constant between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 [~,pval,~,stats] = ttest(pdrp_conf(:,1),pdrp_conf(:,2));
-disp(['confidence: confidence drop between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['confidence: confidence drop between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 
@@ -414,11 +418,11 @@ disp(['confidence: confidence drop between Cb and Ob t=',num2str(stats.tstat), .
 disp(['- Choice repetition curves:'])
 
 [~,pval,~,stats] = ttest(pse_resp(:,1),pse_resp(:,2));
-disp(['choice: PSE between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['choice: PSE between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 [~,pval,~,stats] = ttest(woe_resp(:,1),woe_resp(:,2));
-disp(['choice: weight of evidrnce between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['choice: weight of evidrnce between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 
@@ -426,20 +430,20 @@ disp(['choice: weight of evidrnce between Cb and Ob t=',num2str(stats.tstat), ..
 disp(['- Confidence repetition curves:'])
 
 [~,pval,~,stats] = ttest(pse_rep(:,1),pse_rep(:,2));
-disp(['confidence: pse_rep between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['confidence: pse_rep between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 [~,pval,~,stats] = ttest(woe_rep(:,1),woe_rep(:,2));
-disp(['confidence: woe_rep between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['confidence: woe_rep between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 [~,pval,~,stats] = ttest(pse_swi(:,1),pse_swi(:,2));
-disp(['confidence: pse_swi between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['confidence: pse_swi between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 % => these will be performed using jackknifing
 
 [~,pval,~,stats] = ttest(woe_swi(:,1),woe_swi(:,2));
-disp(['confidence: woe_swi between Cb and Ob t=',num2str(stats.tstat), ...
+disp(['confidence: woe_swi between C- and C+ t=',num2str(stats.tstat), ...
     ' df=',num2str(stats.df),' p=',num2str(pval)])
 
 disp 'Note: jackknifed statistics will be necessary for some of the parameters'
@@ -501,7 +505,7 @@ set(gca,'FontName','Helvetica','FontSize',12);
 set(gca,'XTick',[-3.5:-0.5,+0.5:+3.5],'XTickLabel',{'-4','-3','-2','-1','1','2','3','4'});
 set(gca,'YTick',0:0.2:1);
 xlabel('trial position from reversal','FontSize',12);
-ylabel('fraction S2 reported','FontSize',12);
+ylabel('fraction reported correct hidden state','FontSize',12);
 axes = findobj(gcf, 'type', 'axes');
 for a = 1:length(axes)
     if axes(a).YColor <= [1 1 1]
@@ -683,20 +687,20 @@ end
 
 
 
-%% Model-free statistics for performance, confidence and discrimination
+%% Model-free statistics for performance, confidence, and discrimination
 
 disp 'Statistics for basic behaviour:'
 
 [~,p_paccu,~,stats_accu] = ttest(paccu(:,1),paccu(:,2)) ;
-disp(['mean accuracy between Cb and Ob t=',num2str(stats_accu.tstat), ...
+disp(['mean accuracy between C- and C+ t=',num2str(stats_accu.tstat), ...
     ' df=',num2str(stats_accu.df),' p=',num2str(p_paccu)])
 
 [~,p_pconf,~,stats_pconf] = ttest(pconf(:,1),pconf(:,2)) ;
-disp(['mean confidence between Cb and Ob t=',num2str(stats_pconf.tstat), ...
+disp(['mean confidence between C- and C+ t=',num2str(stats_pconf.tstat), ...
     ' df=',num2str(stats_pconf.df),' p=',num2str(p_pconf)])
 
 [~,p_discrim,~,stats_discrim] = ttest(discrim(:,1),discrim(:,2)) ;
-disp(['discrimination capacity between Cb and Ob t=',num2str(stats_discrim.tstat), ...
+disp(['discrimination capacity between C- and C+ t=',num2str(stats_discrim.tstat), ...
     ' df=',num2str(stats_discrim.df),' p=',num2str(p_discrim)])
 
 
@@ -712,7 +716,7 @@ errorbar(1:2,[mean(paccu(:,1)) 0],[std(paccu(:,1)) 0]/sqrt(nsubj), ...
 errorbar(1:2,[0 mean(paccu(:,2))],[0 std(paccu(:,2))]/sqrt(nsubj), ...
     'Color',rgb(2,:),'LineStyle','none','LineWidth',3);
 set(gca,'FontName','Helvetica','FontSize',12,'LineWidth',1.5);
-set(gca,'XTick',1:2,'XTickLabel',{'Cb','Ob'});
+set(gca,'XTick',1:2,'XTickLabel',{'C-','C+'});
 xlabel('condition');
 title(['p=',num2str(p_paccu)]);
 ylabel('performance');
@@ -727,7 +731,7 @@ errorbar(1:2,[mean(pconf(:,1)) 0],[std(pconf(:,1)) 0]/sqrt(nsubj), ...
 errorbar(1:2,[0 mean(pconf(:,2))],[0 std(pconf(:,2))]/sqrt(nsubj), ...
     'Color',rgb(2,:),'LineStyle','none','LineWidth',3);
 set(gca,'FontName','Helvetica','FontSize',12,'LineWidth',1.5);
-set(gca,'XTick',1:2,'XTickLabel',{'Cb','Ob'});
+set(gca,'XTick',1:2,'XTickLabel',{'C-','C+'});
 xlabel('condition');
 title(['p=',num2str(p_pconf)]);
 ylabel('proportion high confidence');
@@ -742,7 +746,7 @@ errorbar(1:2,[mean(discrim(:,1)) 0],[std(discrim(:,1)) 0]/sqrt(nsubj), ...
 errorbar(1:2,[0 mean(discrim(:,2))],[0 std(discrim(:,2))]/sqrt(nsubj), ...
     'Color',rgb(2,:),'LineStyle','none','LineWidth',3);
 set(gca,'FontName','Helvetica','FontSize',12,'LineWidth',1.5);
-set(gca,'XTick',1:2,'XTickLabel',{'Cb','Ob'});
+set(gca,'XTick',1:2,'XTickLabel',{'C-','C+'});
 xlabel('condition');
 title(['p=',num2str(p_discrim)]);
 ylabel('discrimination');
