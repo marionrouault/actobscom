@@ -2,7 +2,7 @@
 
 This repository contains analysis code and data associated with the following paper:
 
-Rouault M., Weiss A., Lee J. K., Drugowitsch J., Chambon V.* and Wyart V.* Controllability boosts neural and cognitive correlates of changes-of-mind in uncertain environments. BioRxiv (2022) https://www.biorxiv.org/content/10.1101/2021.01.04.425114v2.abstract
+Rouault M., Weiss A., Lee J. K., Drugowitsch J., Chambon V.* and Wyart V.* Controllability boosts neural and cognitive correlates of changes-of-mind in uncertain environments. BioRxiv (2022) https://doi.org/10.7554/eLife.75038
 
 Script and data files are included in the repository to enable replication of the main data analyses and statistics reported in the paper.
 
